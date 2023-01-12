@@ -1,7 +1,12 @@
 from question_model import Question
 from data import question_data
 from quiz_brain import QuizBrain
+import requests
 
+response = requests.get('https://opentdb.com/api.php?amount=10&type=boolean')
+response.raise_for_status()
+data = response.json()
+print(data)
 question_bank = []
 for question in question_data:
     question_text = question["question"]
